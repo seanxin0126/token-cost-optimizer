@@ -27,8 +27,18 @@ token-cost-optimizer/
 │   ├── prune_code.py         # AST 代码骨架提取器
 │   ├── compress_json.py      # JSON 数据结构采样与压缩
 │   ├── clean_log.py          # 终端/构建日志去噪与错误提取
-│   └── estimate_tokens.py    # 文件与目录 Token 预算评估器
+│   ├── estimate_tokens.py    # 文件与目录 Token 预算评估器
+│   └── check_updates.py      # 每周前沿技术检索与演进规程
 ```
+
+---
+
+## 🔄 定期演进与更新规程 (Weekly Auto-Evolution)
+
+本项目受自动化调度器（Scheduler）管理，按照 **每 7 天一次** 的周期自主运作：
+1. **自动检索**：检索全球最新的 LLM 上下文剪裁、AST 分析、结构化采样技术。
+2. **本地评估**：验证新方案的 Token 节省率与本地确定性执行表现。
+3. **人工确认 (Human-in-the-Loop)**：严格执行三级风控（L3 Interception），生成变动报告向所有者发起审批，在获得明确授权后才执行 GitHub 仓库推送与代码同步。
 
 ---
 
