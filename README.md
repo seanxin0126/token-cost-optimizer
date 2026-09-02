@@ -32,10 +32,10 @@
 
 | Benchmark Scenario | Sample File | Raw Context (Before) | Optimized Context (After) | Net Saved | Savings Rate | Execution Latency |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Python AST Pruning** | `sample_code.py` | 856 Tokens | 278 Tokens | 578 Tokens | 🚀 **67.52%** | ~75 ms |
-| **JSON Schema Fold** | `sample_data.json` | 682 Tokens | 181 Tokens | 501 Tokens | 🚀 **73.46%** | ~67 ms |
-| **Log Denoising** | `sample.log` | 400 Tokens | 305 Tokens | 95 Tokens | ⚡ **23.75%** | ~64 ms |
-| **🏆 TOTAL COMBINED** | **Real Engineering Dataset** | **1,938 Tokens** | **764 Tokens** | **1,174 Tokens** | 🔥 **60.58%** | **< 80 ms** |
+| **Python AST Pruning** | `sample_code.py` | 856 Tokens | 278 Tokens | 578 Tokens | 🚀 **67.5%** | ~75 ms |
+| **JSON Schema Fold** | `sample_data.json` | 682 Tokens | 181 Tokens | 501 Tokens | 🚀 **73.5%** | ~67 ms |
+| **Log Denoising** | `sample.log` | 400 Tokens | 305 Tokens | 95 Tokens | ⚡ **23.8%** | ~64 ms |
+| **🏆 TOTAL COMBINED** | **Real Engineering Dataset** | **1,938 Tokens** | **764 Tokens** | **1,174 Tokens** | 🔥 **60.6%** | **< 80 ms** |
 
 ---
 
@@ -103,7 +103,7 @@ Place this repository under `.agents/skills/token-cost-optimizer` in your worksp
 
 ---
 
-### 📊 真实基准测试与节流收益实测 (综合节流 60.58%)
+### 📊 真实基准测试与节流收益实测 (综合节流 60.6%)
 
 <div align="center">
   <img src="assets/token_savings_comparison_chart.jpg" alt="Token 节流前后实测对比图" width="100%" />
@@ -113,10 +113,10 @@ Place this repository under `.agents/skills/token-cost-optimizer` in your worksp
 
 | 测试场景 | 样本文件 | 原始上下文 (Before) | 优化后上下文 (After) | 净节省 Token | 节流百分比 | 本地执行延迟 |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Python 代码 AST 剪枝** | `sample_code.py` | 856 Tokens | 278 Tokens | 578 Tokens | 🚀 **67.52%** | ~75 ms |
-| **巨型 JSON 结构采样** | `sample_data.json` | 682 Tokens | 181 Tokens | 501 Tokens | 🚀 **73.46%** | ~67 ms |
-| **终端构建日志去噪** | `sample.log` | 400 Tokens | 305 Tokens | 95 Tokens | ⚡ **23.75%** | ~64 ms |
-| **🏆 综合实测总计** | **全量工程数据集** | **1,938 Tokens** | **764 Tokens** | **1,174 Tokens** | 🔥 **60.58%** | **< 80 ms** |
+| **Python 代码 AST 剪枝** | `sample_code.py` | 856 Tokens | 278 Tokens | 578 Tokens | 🚀 **67.5%** | ~75 ms |
+| **巨型 JSON 结构采样** | `sample_data.json` | 682 Tokens | 181 Tokens | 501 Tokens | 🚀 **73.5%** | ~67 ms |
+| **终端构建日志去噪** | `sample.log` | 400 Tokens | 305 Tokens | 95 Tokens | ⚡ **23.8%** | ~64 ms |
+| **🏆 综合实测总计** | **全量工程数据集** | **1,938 Tokens** | **764 Tokens** | **1,174 Tokens** | 🔥 **60.6%** | **< 80 ms** |
 
 ---
 
