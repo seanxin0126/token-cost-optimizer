@@ -43,12 +43,3 @@ python .agents/skills/token-cost-optimizer/scripts/estimate_tokens.py <path>
 ```
 * **效果**：提供准确的 Token 消耗预估，辅助 `autonomous-meta-workflow` 做出准入决策。
 
----
-
-## 🔄 每 7 天自主前沿检索与进化规程
-1. **定时周期**：每 7 天自主触发一次网络深度检索（聚焦最新的 Prompt 压缩、AST 剪枝、上下文缓存、日志采样技术）。
-2. **三级风控确认（L3 拦截）**：
-   - 本地自动验证与对比新算法的 Token 节省率。
-   - 向用户输出《周度 Token 节流技术优化报告与代码变动提案》。
-   - **严禁擅自直接推送**：必须经用户显式确认同意后，方可将新特性合并并推送至 GitHub 仓库。
-
