@@ -17,7 +17,9 @@ All notable changes to the `token-cost-optimizer` skill and repository will be d
 3. **GitHub Actions 云端 7 天自动演进调度器**：
    - 集成 `.github/workflows/weekly-research.yml`，实现每 7 天在 GitHub 云端自动触发前沿论文与开源技术检索。
    - 自动生成周报并分发 GitHub Issue，通知仓库所有者进行 Human-in-the-Loop 人工确认，完全无需本地电脑开机。
-4. **防御性异常处理与超时保护**：
+4. **OpenAI Codex 与 GitHub Copilot 深度兼容规范**：
+   - 增加专用的 `.github/copilot-instructions.md` 与 `CODEX.md` 接入配置说明，帮助 Codex 模型聚焦高质量 AST 函数/类签名，减少歧义并提升代码补全精准度。
+5. **防御性异常处理与超时保护**：
    - 为各脚本增添了优雅的异常降级处理，防止在解析异常格式文件时引发阻塞。
 
 ---
@@ -30,10 +32,12 @@ All notable changes to the `token-cost-optimizer` skill and repository will be d
    - Integrated robust `sys.stdout.reconfigure(encoding='utf-8', errors='replace')` across all core utility scripts (`prune_code.py`, `compress_json.py`, `clean_log.py`, `estimate_tokens.py`).
 2. **Intelligent Directory & File Filtering**:
    - Enhanced directory traversal in `estimate_tokens.py` to seamlessly inspect valid hidden project paths (such as `.agents`) while properly excluding `.git`, `__pycache__`, `.venv`, `node_modules`, `build`, and `dist`.
-3. **7-Day Cloud-Native Autonomous Evolution via GitHub Actions**:
+3. **OpenAI Codex & GitHub Copilot Native Support**:
+   - Added tailored instructions (`.github/copilot-instructions.md` & `CODEX.md`) to guide Codex-based agents to leverage AST skeletons for higher completion accuracy and zero token overflow.
+4. **7-Day Cloud-Native Autonomous Evolution via GitHub Actions**:
    - Added `.github/workflows/weekly-research.yml` to automatically execute academic/open-source research every 7 days on GitHub cloud runners.
    - Automatically publishes weekly optimization reports and creates structured GitHub Issues for Human-in-the-Loop owner authorization without requiring local machine uptime.
-4. **Defensive Error Handling & Graceful Fallback**:
+5. **Defensive Error Handling & Graceful Fallback**:
    - Enhanced exception handling and timeout guarantees across all tools to prevent hanging or unexpected pipeline crashes.
 
 ---

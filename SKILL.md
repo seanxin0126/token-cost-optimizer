@@ -9,7 +9,7 @@ metadata:
 
 # Token Cost Optimizer 极度节流与成本优化工具套件
 
-本技能专为在长任务与复杂工程中实现 **50% ~ 90% 的 Token 压缩** 而设计，通过本地确定性 Python 工具替代盲目全量读入。
+本技能专为在长任务与复杂工程中实现 **50% ~ 90% 的 Token 压缩** 而设计，原生兼容 **Google Antigravity、OpenAI Codex、GitHub Copilot、Claude Code、Cursor、Windsurf、Cline、Dify** 等主流智能体，通过本地确定性 Python 工具替代盲目全量读入。
 
 ---
 
