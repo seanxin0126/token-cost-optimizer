@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rawGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#f87171" />
+    </linearGradient>
+    <linearGradient id="optGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="460" rx="16" fill="url(#bgGrad)" stroke="#334155" stroke-width="2" />
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">
+    🚀 Token Cost Optimizer - Before &amp; After Comparison Chart
+  </text>
+  <text x="40" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+    Deterministic local compression results across Code, JSON datasets, and Terminal Logs
+  </text>
+
+  <!-- Summary KPI Cards -->
+  <g transform="translate(40, 95)">
+    <!-- Card 1 -->
+    <rect width="220" height="65" rx="10" fill="#1e293b" stroke="#334155" />
+    <text x="15" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">TOTAL RAW TOKENS</text>
+    <text x="15" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#f87171">1,938 Tokens</text>
+
+    <!-- Card 2 -->
+    <rect x="250" width="220" height="65" rx="10" fill="#1e293b" stroke="#334155" />
+    <text x="265" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">OPTIMIZED TOKENS</text>
+    <text x="265" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#34d399">764 Tokens</text>
+
+    <!-- Card 3 -->
+    <rect x="500" width="220" height="65" rx="10" fill="#1e293b" stroke="#334155" />
+    <text x="515" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">OVERALL SAVINGS RATE</text>
+    <text x="515" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#38bdf8">60.6% Saved</text>
+  </g>
+
+  <!-- Horizontal Comparison Bars -->
+  <g transform="translate(40, 185)">
+
+    <!-- Category: Python Code AST Pruning -->
+    <text x="0" y="16" font-family="sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">Python Code AST Pruning</text>
+    <text x="0" y="32" font-family="sans-serif" font-size="11" fill="#64748b">sample_code.py (75.7ms)</text>
+
+    <!-- Raw Bar -->
+    <rect x="180" y="0" width="400" height="18" rx="4" fill="url(#rawGrad)" />
+    <text x="590" y="14" font-family="sans-serif" font-size="11" font-weight="bold" fill="#fca5a5">856 Tok</text>
+
+    <!-- Opt Bar -->
+    <rect x="180" y="22" width="129" height="18" rx="4" fill="url(#optGrad)" />
+    <text x="319" y="36" font-family="sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7">278 Tok (-67.5%)</text>
+
+    <!-- Category: Massive JSON Schema Fold -->
+    <text x="0" y="81" font-family="sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">Massive JSON Schema Fold</text>
+    <text x="0" y="97" font-family="sans-serif" font-size="11" fill="#64748b">sample_data.json (67.2ms)</text>
+
+    <!-- Raw Bar -->
+    <rect x="180" y="65" width="318" height="18" rx="4" fill="url(#rawGrad)" />
+    <text x="508" y="79" font-family="sans-serif" font-size="11" font-weight="bold" fill="#fca5a5">682 Tok</text>
+
+    <!-- Opt Bar -->
+    <rect x="180" y="87" width="84" height="18" rx="4" fill="url(#optGrad)" />
+    <text x="274" y="101" font-family="sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7">181 Tok (-73.5%)</text>
+
+    <!-- Category: Terminal/Build Log Denoise -->
+    <text x="0" y="146" font-family="sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">Terminal/Build Log Denoise</text>
+    <text x="0" y="162" font-family="sans-serif" font-size="11" fill="#64748b">sample.log (64.0ms)</text>
+
+    <!-- Raw Bar -->
+    <rect x="180" y="130" width="186" height="18" rx="4" fill="url(#rawGrad)" />
+    <text x="376" y="144" font-family="sans-serif" font-size="11" font-weight="bold" fill="#fca5a5">400 Tok</text>
+
+    <!-- Opt Bar -->
+    <rect x="180" y="152" width="142" height="18" rx="4" fill="url(#optGrad)" />
+    <text x="332" y="166" font-family="sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7">305 Tok (-23.8%)</text>
+
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(40, 415)">
+    <rect width="12" height="12" rx="3" fill="#ef4444" />
+    <text x="18" y="10" font-family="sans-serif" font-size="11" fill="#94a3b8">Raw Context (Before)</text>
+
+    <rect x="160" width="12" height="12" rx="3" fill="#10b981" />
+    <text x="178" y="10" font-family="sans-serif" font-size="11" fill="#94a3b8">Optimized Context (After)</text>
+
+    <text x="560" y="10" font-family="sans-serif" font-size="11" fill="#38bdf8">⚡ Pure Local Python Determinism</text>
+  </g>
+</svg>

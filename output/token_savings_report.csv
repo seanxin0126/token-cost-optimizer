@@ -1,0 +1,5 @@
+﻿Category,Filename,Raw Tokens,Optimized Tokens,Tokens Saved,Savings Rate (%),Latency (ms)
+Python Code AST Pruning,sample_code.py,856,278,578,67.52%,75.69
+Massive JSON Schema Fold,sample_data.json,682,181,501,73.46%,67.17
+Terminal/Build Log Denoise,sample.log,400,305,95,23.75%,63.96
+TOTAL,All Samples,1938,764,1174,60.58%,-

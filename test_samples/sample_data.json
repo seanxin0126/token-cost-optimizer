@@ -1,0 +1,135 @@
+{
+  "api_version": "2.4.0",
+  "environment": "production",
+  "generated_at": "2026-09-02T12:00:00Z",
+  "total_records": 120,
+  "pagination": {
+    "page": 1,
+    "per_page": 50,
+    "has_next": true,
+    "next_cursor": "eyJjdXJzb3IiOjEyMDB9"
+  },
+  "customers": [
+    {
+      "customer_id": "cust_99201",
+      "personal_info": {
+        "first_name": "Alexander",
+        "last_name": "Wright",
+        "email": "alex.wright@example.com",
+        "phone": "+1-555-0192",
+        "tier": "enterprise_platinum"
+      },
+      "account_status": {
+        "is_active": true,
+        "email_verified": true,
+        "mfa_enabled": true,
+        "last_login_epoch": 1788289200
+      },
+      "billing_profile": {
+        "currency": "USD",
+        "current_balance": 1420.50,
+        "auto_renew": true,
+        "default_payment_method": "pm_card_visa_4242",
+        "billing_address": {
+          "street_line1": "742 Evergreen Terrace",
+          "street_line2": "Suite 400",
+          "city": "Springfield",
+          "state_or_province": "OR",
+          "postal_code": "97477",
+          "country_code": "US"
+        }
+      },
+      "order_history": [
+        {
+          "order_id": "ord_881920",
+          "order_timestamp": "2026-08-15T09:30:12Z",
+          "items": [
+            {"sku": "SKU-PRO-01", "name": "Cloud Compute Node", "qty": 4, "price": 250.00},
+            {"sku": "SKU-STG-99", "name": "Block Storage 1TB", "qty": 10, "price": 42.00}
+          ],
+          "fulfillment_status": "delivered",
+          "tracking_number": "TRK-9920-USPS"
+        },
+        {
+          "order_id": "ord_881921",
+          "order_timestamp": "2026-08-20T14:10:05Z",
+          "items": [
+            {"sku": "SKU-NET-02", "name": "Dedicated Egress IP", "qty": 1, "price": 50.00}
+          ],
+          "fulfillment_status": "active"
+        }
+      ]
+    },
+    {
+      "customer_id": "cust_99202",
+      "personal_info": {
+        "first_name": "Sophia",
+        "last_name": "Chen",
+        "email": "sophia.chen@example.org",
+        "phone": "+61-4-1234-5678",
+        "tier": "enterprise_gold"
+      },
+      "account_status": {
+        "is_active": true,
+        "email_verified": true,
+        "mfa_enabled": false,
+        "last_login_epoch": 1788295000
+      },
+      "billing_profile": {
+        "currency": "AUD",
+        "current_balance": 3120.00,
+        "auto_renew": true,
+        "default_payment_method": "pm_card_mc_5555",
+        "billing_address": {
+          "street_line1": "100 George Street",
+          "street_line2": "Level 18",
+          "city": "Sydney",
+          "state_or_province": "NSW",
+          "postal_code": "2000",
+          "country_code": "AU"
+        }
+      },
+      "order_history": [
+        {
+          "order_id": "ord_882001",
+          "order_timestamp": "2026-08-28T11:05:40Z",
+          "items": [
+            {"sku": "SKU-PRO-02", "name": "GPU Inference Cluster", "qty": 2, "price": 1200.00}
+          ],
+          "fulfillment_status": "delivered"
+        }
+      ]
+    },
+    {
+      "customer_id": "cust_99203",
+      "personal_info": {
+        "first_name": "Marcus",
+        "last_name": "Vance",
+        "email": "m.vance@techcorp.io",
+        "phone": "+44-20-7946-0912",
+        "tier": "starter_pro"
+      },
+      "account_status": {
+        "is_active": true,
+        "email_verified": true,
+        "mfa_enabled": true,
+        "last_login_epoch": 1788301200
+      },
+      "billing_profile": {
+        "currency": "GBP",
+        "current_balance": 450.00,
+        "auto_renew": false,
+        "default_payment_method": "pm_direct_debit_9981",
+        "billing_address": {
+          "street_line1": "221B Baker Street",
+          "street_line2": "",
+          "city": "London",
+          "state_or_province": "Greater London",
+          "postal_code": "NW1 6XE",
+          "country_code": "GB"
+        }
+      },
+      "order_history": []
+    }
+  ]
+}

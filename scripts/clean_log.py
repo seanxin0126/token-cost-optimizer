@@ -13,19 +13,22 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 def clean_log_text(text: str) -> str:
-    # 移除 ANSI 转义序列
-    ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+    # 移除 ANSI 转义序列 (包括实际字节与字面量转义)
+    ansi_escape = re.compile(r'(\x1B|\\u001b|\\033)(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
     clean = ansi_escape.sub('', text)
     
     lines = clean.splitlines()
     filtered_lines = []
     
     skip_patterns = [
-        re.compile(r'^\s*[\d\.]+\s*kB\s*[\d\.]+\s*kB/s'), # 下载进度
-        re.compile(r'^\s*[-/\\]\s*fetching'),
-        re.compile(r'^\s*npm\s+http\s+fetch'),
-        re.compile(r'^\s*Downloading\s+'),
-        re.compile(r'^\s*\[\s*\d+%\s*\]') # 进度百分比
+        re.compile(r'^\s*[\d\.]+\s*kB\s*[\d\.]+\s*kB/s'), # 下载速度
+        re.compile(r'^\s*[-/\\]\s*fetching', re.IGNORECASE),
+        re.compile(r'^\s*npm\s+http\s+fetch', re.IGNORECASE),
+        re.compile(r'^\s*Downloading\s+', re.IGNORECASE),
+        re.compile(r'\[=*>*-*\]'), # 进度条 [=====>------]
+        re.compile(r'\[PROGRESS\]', re.IGNORECASE),
+        re.compile(r'^\s*\[\s*\d+%\s*\]'), # 进度百分比
+        re.compile(r'^\s*[\d\.]+\s*%\s*\(\d+/\d+\s*modules?\s*downloaded\)', re.IGNORECASE)
     ]
     
     for line in lines:
