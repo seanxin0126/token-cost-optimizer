@@ -33,23 +33,6 @@
 
 ---
 
-### 📦 Repository Structure
-
-```text
-token-cost-optimizer/
-├── SKILL.md                  # Standard Antigravity Agent Skill Definition
-├── README.md                 # Bilingual documentation & architecture guide
-├── CHANGELOG.md              # Bilingual version history & release notes
-├── .github/workflows/        # Cloud-native automation workflows
-├── scripts/
-│   ├── prune_code.py         # AST syntax tree code skeleton extractor
-│   ├── compress_json.py      # JSON schema sampling & structural compressor
-│   ├── clean_log.py          # Terminal/build log noise stripper
-│   └── estimate_tokens.py    # Directory/file token footprint estimator
-```
-
----
-
 ### 🚀 Quick Start (English)
 
 #### 1. Code Skeleton Extraction (`prune_code.py`)
