@@ -8,6 +8,10 @@ import sys
 import re
 from pathlib import Path
 
+# 确保 Windows 终端 UTF-8 兼容输出
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 def clean_log_text(text: str) -> str:
     # 移除 ANSI 转义序列
     ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')

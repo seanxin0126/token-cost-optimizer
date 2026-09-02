@@ -9,6 +9,10 @@ import json
 from pathlib import Path
 from typing import Any
 
+# 确保 Windows 终端 UTF-8 兼容输出
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 def summarize_json_structure(data: Any, max_depth: int = 3, current_depth: int = 0) -> Any:
     if current_depth > max_depth:
         return "..."

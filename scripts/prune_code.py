@@ -9,6 +9,10 @@ import sys
 import ast
 from pathlib import Path
 
+# 确保 Windows 终端 UTF-8 兼容输出
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 def prune_python_ast(source_code: str) -> str:
     """使用 Python AST 提取代码骨架"""
     try:

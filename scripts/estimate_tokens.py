@@ -8,11 +8,13 @@ import sys
 import os
 from pathlib import Path
 
+# 确保 Windows 终端 UTF-8 兼容输出
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 def estimate_tokens_from_text(text: str) -> int:
-    # 启发式估算：中文约 1.2~1.5 chars/token，英文代码约 3.5~4 chars/token
     chinese_chars = len([c for c in text if '\u4e00' <= c <= '\u9fff'])
     other_chars = len(text) - chinese_chars
-    
     tokens = int((chinese_chars / 1.3) + (other_chars / 3.8))
     return max(1, tokens)
 
@@ -37,8 +39,9 @@ def main():
         total_tokens = 0
         file_count = 0
         print(f"📁 扫描目录: {target_path}")
+        ignored_dirs = {".git", ".venv", "__pycache__", ".vscode", "node_modules", "build", "dist"}
         for p in target_path.rglob("*"):
-            if p.is_file() and not any(part.startswith(".") for part in p.parts):
+            if p.is_file() and not any(part in ignored_dirs for part in p.parts):
                 try:
                     content = p.read_text(encoding="utf-8", errors="replace")
                     tokens = estimate_tokens_from_text(content)
