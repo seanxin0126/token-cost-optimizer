@@ -1,4 +1,7 @@
-# Token Cost Optimizer 🚀
+# Token Cost Optimizer 🚀 `v1.0.1`
+
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](CHANGELOG.md)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 > **Drastic Token Compression & Context Cost Optimizer for Agentic AI Workflows**
 
@@ -23,6 +26,8 @@
 token-cost-optimizer/
 ├── SKILL.md                  # Antigravity Agent 标准技能注册描述
 ├── README.md                 # 仓库详细使用说明
+├── CHANGELOG.md              # 中英文版本更新日志
+├── .github/workflows/        # GitHub Actions 7天云端自动演进工作流
 ├── scripts/
 │   ├── prune_code.py         # AST 代码骨架提取器
 │   ├── compress_json.py      # JSON 数据结构采样与压缩

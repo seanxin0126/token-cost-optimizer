@@ -2,7 +2,8 @@
 name: token-cost-optimizer
 description: 极限节省与压缩 Token 开销工具库（Token Cost Optimizer）。提供 AST 代码骨架提取（剔除庞大函数体提取接口签名）、大型 JSON 结构压缩（提取 Schema 样本）、终端日志去噪（过滤进度条与重复日志）及 Token 精确预算估算。在处理超长代码文件、分析大型 JSON 数据、审查大日志或任务准入前激活此技能。
 metadata:
-  builtin_skill_version: "1.0"
+  builtin_skill_version: "1.0.1"
+  version: "1.0.1"
   purpose: "Drastic Token Compression & Cost Optimization"
 ---
 
