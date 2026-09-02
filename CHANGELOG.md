@@ -6,7 +6,7 @@ All notable changes to the `token-cost-optimizer` skill and repository will be d
 
 ## [v1.0.1] - 2026-09-02
 
-### 🇨🇳 中文更新说明
+### 中文更新说明
 
 #### 🚀 核心更新与功能特性
 1. **跨平台控制台 UTF-8 兼容性增强**：
@@ -24,7 +24,7 @@ All notable changes to the `token-cost-optimizer` skill and repository will be d
 
 ---
 
-### 🇬🇧 English Release Notes
+### English Release Notes
 
 #### 🚀 Key Features & Improvements
 1. **Cross-Platform UTF-8 Console Compatibility**:
@@ -44,12 +44,12 @@ All notable changes to the `token-cost-optimizer` skill and repository will be d
 
 ## [v1.0.0] - 2026-09-02
 
-### 🇨🇳 中文说明
+### 中文说明
 - 初始版本发布。
 - 包含 4 大核心本地确定性压缩工具：AST 代码骨架提取、大型 JSON 数据压缩、终端日志去噪、以及 Token 预算评估。
 - 提供标准 Antigravity `SKILL.md` 与中英文 `README.md`。
 
-### 🇬🇧 English Release Notes
+### English Release Notes
 - Initial official release.
 - Core local deterministic token optimization tools: AST Code Skeleton Pruner, JSON Schema Compressor, Terminal Log Cleaner, and Token Estimator.
 - Standard Antigravity `SKILL.md` registration and complete documentation.

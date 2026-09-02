@@ -7,14 +7,14 @@
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)]()
 [![Python](https://img.shields.io/badge/python-3.8%2B-brightgreen.svg)]()
 
-**[English Documentation](#-english-documentation) | [中文说明文档](#-中文说明文档)**
+**[English](#english-documentation) | [中文说明](#chinese-documentation)**
 
 </div>
 
 ---
 
 <a name="english-documentation"></a>
-## 🇬🇧 English Documentation
+## English Documentation
 
 > **Deterministic Context Pruning & Token Budget Optimization Suite for Agentic AI Workflows**
 
@@ -88,8 +88,8 @@ Place this repository under `.agents/skills/token-cost-optimizer` in your worksp
 
 ---
 
-<a name="中文说明文档"></a>
-## 🇨🇳 中文说明文档
+<a name="chinese-documentation"></a>
+## 中文说明文档
 
 > **专为大模型智能体（Agentic AI）设计的本地确定性 Token 极度节流与成本优化工具套件**
 
