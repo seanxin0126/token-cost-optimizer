@@ -1,4 +1,4 @@
-# Token Cost Optimizer 🚀 `v1.0.1`
+﻿# Token Cost Optimizer 🚀 `v1.0.1`
 
 <div align="center">
 
@@ -106,7 +106,7 @@ Place this repository under `.agents/skills/token-cost-optimizer` in your worksp
 ### 📊 真实基准测试与节流收益实测 (综合节流 60.6%)
 
 <div align="center">
-  <img src="assets/token_savings_comparison_chart.jpg" alt="Token 节流前后实测对比图" width="100%" />
+  <img src="assets/token_savings_comparison_chart_zh.jpg" alt="Token 节流前后实测对比图" width="100%" />
 </div>
 
 <br>
