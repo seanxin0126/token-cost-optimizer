@@ -1,0 +1,49 @@
+---
+name: token-cost-optimizer
+description: 极限节省与压缩 Token 开销工具库（Token Cost Optimizer）。提供 AST 代码骨架提取（剔除庞大函数体提取接口签名）、大型 JSON 结构压缩（提取 Schema 样本）、终端日志去噪（过滤进度条与重复日志）及 Token 精确预算估算。在处理超长代码文件、分析大型 JSON 数据、审查大日志或任务准入前激活此技能。
+metadata:
+  builtin_skill_version: "1.0"
+  purpose: "Drastic Token Compression & Cost Optimization"
+---
+
+# Token Cost Optimizer 极度节流与成本优化工具套件
+
+本技能专为在长任务与复杂工程中实现 **50% ~ 90% 的 Token 压缩** 而设计，通过本地确定性 Python 工具替代盲目全量读入。
+
+---
+
+## 🛠️ 核心工具脚本规程
+
+### 1. 代码骨架提取（节省 80%~95% 代码 Token）
+在不需要修改函数内部实现、仅需了解模块架构、调用关系或接口签名时，运行：
+```bash
+python .agents/skills/token-cost-optimizer/scripts/prune_code.py <file_path>
+```
+* **效果**：自动解析 AST，提取模块 Docstring、类定义、方法签名与参数，剔除具体实现。
+
+### 2. 大型 JSON 结构压缩（节省 90%+ 数据 Token）
+当面对几十万行的复杂 JSON 数据文件时，严禁全量读入，运行：
+```bash
+python .agents/skills/token-cost-optimizer/scripts/compress_json.py <json_path>
+```
+* **效果**：自动提取数据层级 Schema、字段类型及典型 Sample，保留结构全貌同时压缩体积。
+
+### 3. 终端与构建日志去噪（节省 50%+ 调试 Token）
+当运行构建或安装命令产生大量输出时，运行：
+```bash
+python .agents/skills/token-cost-optimizer/scripts/clean_log.py <log_file_or_text>
+```
+* **效果**：去除 ANSI 转义色彩码、下载进度条、npm/pip 轮询日志，保留错误堆栈与退出结论。
+
+### 4. 任务 Token 预算精确评估
+在执行长任务前，扫描目标文件或目录的 Token 占用：
+```bash
+python .agents/skills/token-cost-optimizer/scripts/estimate_tokens.py <path>
+```
+* **效果**：提供准确的 Token 消耗预估，辅助 `autonomous-meta-workflow` 做出准入决策。
+
+---
+
+## 📋 最佳实践指南
+- 始终以“最小上下文原则”推进：优先读骨架，确认需要修改的具体函数后再用 `view_file` 切片读取局部行号。
+- 中间大体量运算结果强制落盘持久化至 `workspace/cache/`，大模型仅引用文件路径而非全量文本。
