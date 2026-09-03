@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>小红书创作者服务平台 - 发布笔记</title>
+    <style>
+        .css-12345 { display: flex; color: #333; }
+        .styled-header-xyz { font-size: 16px; margin: 10px; }
+        .jsx-987654 { background: #fff; }
+    </style>
+    <script src="https://fe-static.xhscdn.com/analytics.js"></script>
+    <script>window.__INITIAL_STATE__ = { user: { id: "123456", name: "Creator" } };</script>
+</head>
+<body class="css-1a2b3c">
+    <div id="app" class="v-root-container">
+        <header class="header-nav">
+            <div class="logo">
+                <svg viewBox="0 0 100 100"><path d="M10 10 H 90 V 90 H 10 Z" fill="#ff2442"/></svg>
+            </div>
+            <a href="/creator/home" class="nav-item active">首页</a>
+            <a href="/creator/publish" class="nav-item">发布笔记</a>
+            <div class="user-badge" role="button" data-testid="user-profile-btn">创作者中心</div>
+        </header>
+
+        <main class="publish-container">
+            <div class="tab-list" role="tablist">
+                <button role="tab" class="tab-btn active" data-testid="upload-image-tab">上传图文</button>
+                <button role="tab" class="tab-btn" data-testid="upload-video-tab">上传视频</button>
+            </div>
+
+            <form class="publish-form" id="notePublishForm" action="/api/publish" method="POST">
+                <!-- 上传图片按钮 -->
+                <div class="upload-box" data-testid="uploader-area">
+                    <input type="file" id="fileInput" name="media" accept="image/*" style="display:none" />
+                    <button type="button" class="btn-upload" id="selectMediaBtn" data-testid="btn-select-file">选择图片上传</button>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="preview" />
+                </div>
+
+                <!-- 标题输入框 -->
+                <div class="form-item">
+                    <label for="postTitle">标题</label>
+                    <input type="text" id="postTitle" name="title" placeholder="填写标题会有更多赞哦~" maxlength="20" class="input-title css-xyz" />
+                </div>
+
+                <!-- 正文输入框 -->
+                <div class="form-item">
+                    <label for="postContent">正文</label>
+                    <textarea id="postContent" name="content" placeholder="填写更全面的正文，分享你的心得..." rows="6" class="textarea-content css-abc"></textarea>
+                </div>
+
+                <!-- 话题与标签 -->
+                <div class="tag-selector">
+                    <input type="text" placeholder="添加话题标签，例如 #数码桌搭" id="tagInput" />
+                    <button type="button" class="btn-tag" data-testid="add-tag-btn">添加</button>
+                </div>
+
+                <!-- 发布按钮 -->
+                <div class="action-bar">
+                    <button type="button" class="btn-draft" id="saveDraftBtn">存草稿</button>
+                    <button type="submit" class="btn-submit primary" id="publishBtn" data-testid="btn-submit-note">立即发布</button>
+                </div>
+            </form>
+        </main>
+        
+        <div style="display:none" class="hidden-tracking-layer">
+            <iframe src="https://tracker.xiaohongshu.com"></iframe>
+        </div>
+    </div>
+</body>
+</html>

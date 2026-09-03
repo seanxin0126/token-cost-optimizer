@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Token Cost Optimizer - Real World Token Savings Benchmark & Verification Runner.
-Executes pruning on sample code, sample json, and sample logs, generating structured CSV/MD reports and visual charts.
+Token Cost Optimizer - Real World Token Savings Benchmark & Verification Runner (v1.1.0).
+Executes pruning on Code, JSON datasets, Terminal Logs, and Browser DOM / Xiaohongshu API responses.
+Generates structured CSV/MD reports and visual SVG charts.
 """
 
 import os
@@ -12,7 +13,6 @@ import csv
 import json
 import subprocess
 
-# Ensure UTF-8 stdout on Windows
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -22,10 +22,9 @@ def estimate_tokens(text: str) -> int:
         return 0
     words = len(text.split())
     chars = len(text)
-    # Balanced heuristic (approx 4 chars/token or 1.25 tokens/word)
     return max(1, int((chars / 3.8 + words * 1.2) / 2))
 
-def run_script(script_path: str, arg: str) -> str:
+def run_script(script_path: str, arg: str) -> tuple:
     """Runs a Python script and captures output."""
     cmd = [sys.executable, script_path, arg]
     start_time = time.perf_counter()
@@ -37,10 +36,9 @@ def run_script(script_path: str, arg: str) -> str:
 
 def generate_svg_chart(results: list, total_raw: int, total_opt: int, total_saved_pct: float, output_path: str):
     """Generates a high-contrast, modern SVG comparison chart."""
-    svg_width = 800
-    svg_height = 460
+    svg_width = 850
+    svg_height = 180 + len(results) * 65 + 60
     
-    # SVG header
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_width} {svg_height}" width="100%" height="100%">
   <defs>
     <linearGradient id="rawGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -62,28 +60,28 @@ def generate_svg_chart(results: list, total_raw: int, total_opt: int, total_save
 
   <!-- Title & Subtitle -->
   <text x="40" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">
-    🚀 Token Cost Optimizer - Before &amp; After Comparison Chart
+    🚀 Token Cost Optimizer (v1.1.0) - Benchmark Comparison
   </text>
   <text x="40" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
-    Deterministic local compression results across Code, JSON datasets, and Terminal Logs
+    Deterministic local compression across Code, JSON, Logs, DOM HTML &amp; Browser XHS Sessions
   </text>
 
   <!-- Summary KPI Cards -->
   <g transform="translate(40, 95)">
     <!-- Card 1 -->
-    <rect width="220" height="65" rx="10" fill="#1e293b" stroke="#334155" />
+    <rect width="230" height="65" rx="10" fill="#1e293b" stroke="#334155" />
     <text x="15" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">TOTAL RAW TOKENS</text>
     <text x="15" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#f87171">{total_raw:,} Tokens</text>
 
     <!-- Card 2 -->
-    <rect x="250" width="220" height="65" rx="10" fill="#1e293b" stroke="#334155" />
-    <text x="265" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">OPTIMIZED TOKENS</text>
-    <text x="265" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#34d399">{total_opt:,} Tokens</text>
+    <rect x="260" width="230" height="65" rx="10" fill="#1e293b" stroke="#334155" />
+    <text x="275" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">OPTIMIZED TOKENS</text>
+    <text x="275" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#34d399">{total_opt:,} Tokens</text>
 
     <!-- Card 3 -->
-    <rect x="500" width="220" height="65" rx="10" fill="#1e293b" stroke="#334155" />
-    <text x="515" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">OVERALL SAVINGS RATE</text>
-    <text x="515" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#38bdf8">{total_saved_pct:.1f}% Saved</text>
+    <rect x="520" width="230" height="65" rx="10" fill="#1e293b" stroke="#334155" />
+    <text x="535" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">OVERALL SAVINGS RATE</text>
+    <text x="535" y="48" font-family="sans-serif" font-size="20" font-weight="bold" fill="#38bdf8">{total_saved_pct:.1f}% Saved</text>
   </g>
 
   <!-- Horizontal Comparison Bars -->
@@ -91,7 +89,7 @@ def generate_svg_chart(results: list, total_raw: int, total_opt: int, total_save
 """
 
     max_tokens = max(r["raw_tokens"] for r in results) if results else 1000
-    bar_max_w = 400
+    bar_max_w = 420
 
     y_offset = 0
     for r in results:
@@ -104,12 +102,12 @@ def generate_svg_chart(results: list, total_raw: int, total_opt: int, total_save
     <text x="0" y="{y_offset + 32}" font-family="sans-serif" font-size="11" fill="#64748b">{r['filename']} ({r['latency_ms']:.1f}ms)</text>
 
     <!-- Raw Bar -->
-    <rect x="180" y="{y_offset}" width="{raw_w}" height="18" rx="4" fill="url(#rawGrad)" />
-    <text x="{180 + raw_w + 10}" y="{y_offset + 14}" font-family="sans-serif" font-size="11" font-weight="bold" fill="#fca5a5">{r['raw_tokens']} Tok</text>
+    <rect x="220" y="{y_offset}" width="{raw_w}" height="18" rx="4" fill="url(#rawGrad)" />
+    <text x="{220 + raw_w + 10}" y="{y_offset + 14}" font-family="sans-serif" font-size="11" font-weight="bold" fill="#fca5a5">{r['raw_tokens']} Tok</text>
 
     <!-- Opt Bar -->
-    <rect x="180" y="{y_offset + 22}" width="{opt_w}" height="18" rx="4" fill="url(#optGrad)" />
-    <text x="{180 + opt_w + 10}" y="{y_offset + 36}" font-family="sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7">{r['opt_tokens']} Tok (-{r['savings_pct']:.1f}%)</text>
+    <rect x="220" y="{y_offset + 22}" width="{opt_w}" height="18" rx="4" fill="url(#optGrad)" />
+    <text x="{220 + opt_w + 10}" y="{y_offset + 36}" font-family="sans-serif" font-size="11" font-weight="bold" fill="#6ee7b7">{r['opt_tokens']} Tok (-{r['savings_pct']:.1f}%)</text>
 """
         y_offset += 65
 
@@ -117,12 +115,12 @@ def generate_svg_chart(results: list, total_raw: int, total_opt: int, total_save
   </g>
 
   <!-- Legend -->
-  <g transform="translate(40, 415)">
+  <g transform="translate(40, {svg_height - 35})">
     <rect width="12" height="12" rx="3" fill="#ef4444" />
     <text x="18" y="10" font-family="sans-serif" font-size="11" fill="#94a3b8">Raw Context (Before)</text>
 
-    <rect x="160" width="12" height="12" rx="3" fill="#10b981" />
-    <text x="178" y="10" font-family="sans-serif" font-size="11" fill="#94a3b8">Optimized Context (After)</text>
+    <rect x="180" width="12" height="12" rx="3" fill="#10b981" />
+    <text x="198" y="10" font-family="sans-serif" font-size="11" fill="#94a3b8">Optimized Context (After)</text>
 
     <text x="560" y="10" font-family="sans-serif" font-size="11" fill="#38bdf8">⚡ Pure Local Python Determinism</text>
   </g>
@@ -142,6 +140,8 @@ def main():
     prune_code_py = os.path.join(scripts_dir, "prune_code.py")
     compress_json_py = os.path.join(scripts_dir, "compress_json.py")
     clean_log_py = os.path.join(scripts_dir, "clean_log.py")
+    prune_dom_py = os.path.join(scripts_dir, "prune_dom.py")
+    opt_browser_py = os.path.join(scripts_dir, "optimize_browser_context.py")
 
     test_targets = [
         {
@@ -161,11 +161,23 @@ def main():
             "filename": "sample.log",
             "path": os.path.join(samples_dir, "sample.log"),
             "tool": clean_log_py
+        },
+        {
+            "category": "Browser DOM Interactive Prune",
+            "filename": "sample_xhs_dom.html",
+            "path": os.path.join(samples_dir, "sample_xhs_dom.html"),
+            "tool": prune_dom_py
+        },
+        {
+            "category": "Xiaohongshu API & Session Trim",
+            "filename": "sample_xhs_api.json",
+            "path": os.path.join(samples_dir, "sample_xhs_api.json"),
+            "tool": opt_browser_py
         }
     ]
 
     print("================================================================")
-    print("🚀 Running Token Cost Optimizer Benchmark Test Suite")
+    print("🚀 Running Token Cost Optimizer Benchmark Test Suite (v1.1.0)")
     print("================================================================\n")
 
     results = []
@@ -226,22 +238,16 @@ def main():
 
     # 2. Write Markdown Report
     md_path = os.path.join(output_dir, "token_savings_report.md")
-    monthly_calls = 1000000
-    price_per_1k = 0.0001
-    cost_raw = (monthly_calls * (total_raw_tokens / len(results)) / 1000) * price_per_1k if results else 0
-    cost_opt = (monthly_calls * (total_opt_tokens / len(results)) / 1000) * price_per_1k if results else 0
-    monthly_savings = cost_raw - cost_opt
-
-    md_content = f"""# 📊 Token Cost Optimizer - 真实基准测试与节流效果报告
+    md_content = f"""# 📊 Token Cost Optimizer (v1.1.0) - 基准测试与节流报告
 
 ## 🌟 测试执行摘要 (Executive Summary)
 
 * **测试时间**：{time.strftime('%Y-%m-%d %H:%M:%S')}
-* **测试样本数**：{len(results)} 个典型工程文件 (Python AST 代码、巨型 JSON 数据集、终端与构建日志)
+* **测试样本数**：{len(results)} 个典型工程文件 (Python AST 代码、巨型 JSON 数据集、终端日志、浏览器 DOM HTML、小红书 API 报文)
 * **总原始 Token 量**：`{total_raw_tokens:,}` Tokens
 * **总优化后 Token 量**：`{total_opt_tokens:,}` Tokens
-* **综合 Token 节省率**：🚀 **`{total_saved_pct:.2f}%`** (大幅超越 30% 基准目标)
-* **平均执行延迟**：⚡ `< 10ms` (本地毫秒级纯确定性执行，对 Agent 推理延迟 0 阻塞)
+* **综合 Token 节省率**：🚀 **`{total_saved_pct:.2f}%`**
+* **平均执行延迟**：⚡ `< 15ms` (本地毫秒级纯确定性执行)
 
 ---
 
@@ -257,16 +263,7 @@ def main():
 
 ---
 
-## 💰 商业与成本 ROI 估算 (Business ROI Model)
-
-假设智能体或团队每月调用量为 **1,000,000 次**：
-* **优化前每月 Token 消耗**：~{int(total_raw_tokens/len(results)*monthly_calls):,} Tokens
-* **优化后每月 Token 消耗**：~{int(total_opt_tokens/len(results)*monthly_calls):,} Tokens
-* **单月节流收益 (估算)**：直接降低 **{total_saved_pct:.1f}%** 的 API 调用账单，并大幅降低模型首字响应延迟（TTFT）！
-
----
-
-## 🖼️ 可视化对比图已生成
+## 🖼️ 可视化对比图
 * **SVG 矢量图**：[`output/token_savings_comparison_chart.svg`](token_savings_comparison_chart.svg)
 * **CSV 原始数据**：[`output/token_savings_report.csv`](token_savings_report.csv)
 """
